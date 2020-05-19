@@ -50,16 +50,6 @@ casex(in)
 endcase
 endfunction
 
-function reg[1:0] reg_bt (input a, b, c);
-
-   if (a&b) begin
-      reg_bt = 0;
-   end
-   else if (c==1'b1) begin
-      reg_bt = 1;
-   end
-endfunction
-
 assign led_state_up = (state[1] & !state[0]);   // 2'b10
 assign led_state_dn = (!state[1] & state[0]);   // 2'b01   
 wire reachTop =   |(getFirstone({reg_btdn,1'b0}|{1'b0,reg_btup}|reg_in_bt_floor)&floor);
@@ -91,21 +81,80 @@ always @ (posedge clk or negedge rst) begin
    else
    begin 
 
-   reg_btup[1] = reg_bt(dir, floor[1], btup[1]);
-   reg_btup[2] = reg_bt(dir, floor[2], btup[2]);
-   reg_btup[3] = reg_bt(dir, floor[3], btup[3]);
-   reg_btup[4] = reg_bt(dir, floor[4], btup[4]);
-   reg_btup[5] = reg_bt(dir, floor[5], btup[5]);
-   reg_btup[6] = reg_bt(dir, floor[6], btup[6]);
-   reg_btup[7] = reg_bt(dir, floor[7], btup[7]);
-
-   reg_btdn[2] = reg_bt(~dir, floor[2], btdn[2]);
-   reg_btdn[3] = reg_bt(~dir, floor[3], btdn[3]);
-   reg_btdn[4] = reg_bt(~dir, floor[4], btdn[4]);
-   reg_btdn[5] = reg_bt(~dir, floor[5], btdn[5]);
-   reg_btdn[6] = reg_bt(~dir, floor[6], btdn[6]);
-   reg_btdn[7] = reg_bt(~dir, floor[7], btdn[7]);
-   reg_btdn[8] = reg_bt(~dir, floor[8], btdn[8]);
+    if(dir & floor[1])
+       reg_btup[1] = 0;   
+   else  if (btup[1] == 1'b1)
+      reg_btup[1] = 1;
+      
+   if(dir & floor[2])
+       reg_btup[2] = 0;   
+   else  if (btup[2] == 1'b1)
+      reg_btup[2] = 1;
+      
+   if(dir & floor[3])
+       reg_btup[3] = 0;   
+   else  if (btup[3] == 1'b1)
+      reg_btup[3] = 1;
+      
+   if(dir & floor[4])
+       reg_btup[4] = 0;   
+   else  if (btup[4] == 1'b1)
+      reg_btup[4] = 1;
+      
+    if(dir & floor[5])
+       reg_btup[5] = 0;   
+    else  if (btup[5] == 1'b1)
+      reg_btup[5] = 1;
+      
+     
+   if(dir & floor[6])
+       reg_btup[6] = 0;   
+   else  if (btup[6] == 1'b1)
+      reg_btup[6] = 1; 
+      
+   
+   if(dir & floor[7])
+       reg_btup[7] = 0;   
+   else  if (btup[7] == 1'b1)
+      reg_btup[7] = 1;   
+      
+      
+   if(~dir & floor[2])
+       reg_btdn[2] = 0;   
+   else  if (btdn[2] == 1'b1)
+      reg_btdn[2] = 1;
+      
+   if(~dir & floor[3])
+       reg_btdn[3] = 0;   
+   else  if (btdn[3] == 1'b1)
+      reg_btdn[3] = 1;
+      
+   if(~dir & floor[4])
+       reg_btdn[4] = 0;   
+   else  if (btdn[4] == 1'b1)
+      reg_btdn[4] = 1;
+      
+    if(~dir & floor[5])
+       reg_btdn[5] = 0;   
+   else  if (btdn[5] == 1'b1)
+      reg_btdn[5] = 1;
+      
+     
+   if(~dir & floor[6])
+       reg_btdn[6] = 0;   
+   else  if (btdn[6] == 1'b1)
+      reg_btdn[6] = 1; 
+      
+   
+   if(~dir & floor[7])
+       reg_btdn[7] = 0;   
+   else  if (btdn[7] == 1'b1)
+      reg_btdn[7] = 1;   
+      
+   if(~dir & floor[8])
+       reg_btdn[8] = 0;   
+   else  if (btdn[8] == 1'b1)
+      reg_btdn[8] = 1;   
 
 
             
