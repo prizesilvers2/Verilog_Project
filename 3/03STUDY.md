@@ -51,14 +51,18 @@ reg_btup &=~floor[7:1];
            **end**
 
 **4) system verilog와 verilog 파일의 차이점**
+
 => verilog는 전자 시스템을 model하는 곳에만 쓰임 (HDL용도)
+
 => system verilog는 하드웨어 modeling, design, simulate, test, verify도 하고
 전자 시스템에 실제로 적용됨 (HDL, HVL 용도로 둘다 쓸 수 있음)
+
 => system verilog > verilog	(포함 관계임)
+
 
 ### **2.  다음주까지 알아올 것**
 
-**1) 코드의 효율성을 높이기 위해 할 것을 생각해보기 **
+**1) 코드의 효율성을 높이기 위해 할 것을 생각해보기**
 
 가) &= 고칠 수 있는지 생각해보기
 
@@ -75,6 +79,7 @@ reg_btup &=~floor[7:1];
 바) STATE 안에 CASE부분을 어떻게 간단하게 짤 수 있을지 생각해보기
 
 **2)다음시간에 하드웨어로 구성을 한다면 어떻게 구성하는 것이 좋은지 생각해보기**
+
 
 ### **3. 생각해볼 내용**
 
