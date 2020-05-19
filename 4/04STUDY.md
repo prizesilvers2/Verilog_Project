@@ -54,11 +54,11 @@
 
 => Quartus와 modelsim에는 돌아가나 wave에서 문제가 발생함
 
-![]()
+![](https://github.com/hanbyeol-lab/VERILOG_STUDY/blob/master/image05.png)
 
-![]()
+![](https://github.com/hanbyeol-lab/VERILOG_STUDY/blob/master/image06.png)
 
-![]()
+![](https://github.com/hanbyeol-lab/VERILOG_STUDY/blob/master/image07.png)
 
 **2) 원본코드를 돌려본 결과 **
 ```
@@ -142,9 +142,9 @@
 
 **[원본 WAVE]**
 
-![]()
+![](https://github.com/hanbyeol-lab/VERILOG_STUDY/blob/master/image08.png)
 
-![]()
+![](https://github.com/hanbyeol-lab/VERILOG_STUDY/blob/master/image09.png)
 
 **=> 오리지널 WAVE에도 문제점(단점)이 발생함**
 
@@ -164,4 +164,3 @@
 => 낮은 층의 버튼을 누르는 코드로 엘베 이동을 확인할 수 있도록 해보기
 
 **3) 다음에 사볼만한 코드 찾아오기(후보 3개정도)=> verilog elevator**
-
