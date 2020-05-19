@@ -236,11 +236,11 @@ if(reachBottom) begin
 
 **5. 축약연산자 계산**
 
-''`
+```
 (고친 코드)
 if(~|{1'b0,reg_btup}&&~|{reg_btdn,1'b0}&&~|reg_in_bt_floor) begin
    next_state <=2'b11;
-'''
+```
 
 : 우선순위를 살펴보면 ~| (축약연산자), && 순임.
 
