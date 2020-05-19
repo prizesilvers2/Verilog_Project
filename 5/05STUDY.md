@@ -50,15 +50,15 @@ initial if(Init==0)  //Ok
 
 [Init=1 일 때]
 
-![]()
+![](https://github.com/prizesilvers2/Verilog_Study/blob/master/Figs/5/wave(Init%3D1).png)
 
-![]()
+![](https://github.com/prizesilvers2/Verilog_Study/blob/master/Figs/5/transcript(Init%3D1).png)
 
 [Init=2 일 때]
 
-![]()
+![](https://github.com/prizesilvers2/Verilog_Study/blob/master/Figs/5/wave(Init%3D2).png)
 
-![]()
+![](https://github.com/prizesilvers2/Verilog_Study/blob/master/Figs/5/transcript(Init%3D2).png)
 
 
 ### **2. 결과분석**
