@@ -80,7 +80,7 @@ initial if(Init==0)  //Ok
 
 [Init=3 일 때]
 
-![]()
+![](https://github.com/prizesilvers2/Verilog_Study/blob/master/Figs/5/wave(Init%3D3)2%20(1).png)
 ![](https://github.com/prizesilvers2/Verilog_Study/blob/master/Figs/5/wave(Init%3D3)2%20(2).png)
 
 ![](https://github.com/prizesilvers2/Verilog_Study/blob/master/Figs/5/transcript(Init%3D3).png)
