@@ -50,6 +50,7 @@ pg. 60가서 더 공부하기(verilog HDL의 연산자) => 3,4번 질문
 
 **5. reg_in_bt_floor& =~floor;  ( &=의 의미알아두기)**
 - &=의 의미는 무엇일까?
+
 단순 할당 연산자 = 외에, SystemVerilog에는 C 할당 연산자와 특수 비트wise 할당 연산자가 포함된다. 할당 연산자는 어떤 왼손 인덱스 표현식이 한 번만 평가된다는 점을 제외하고, 블로킹 할당과 의미적으로 동일하다.
 
 출처: http://www.asic-world.com/systemverilog/operators1.html
@@ -144,20 +145,23 @@ task와 함수는 사용자가 지정할 수 있고, 이미 툴에 내장된 함
 ## 오늘 알게 된 것
 
 **1. in_bt_floor가 [8:1]로 안에서 누를 수 있는 층수를 의미함.**
-
+```
 근거) if(floor[1]&&state==2'b00)
      reg_in_bt_floor[1] = 0;
    else if ( in_bt_floor[1] == 1)
       reg_in_bt_floor[1] = 1;
- 이 코드의 의미가 1층에 있고 문이 열려있는 상태를 제외하고는 안에서 1층버튼이 눌리면 1층으로 간다는 의미
- 따라서 안에서 층수를 선택할 수 있다는 것을 알 수 있음
+```
+=> 이 코드의 의미가 1층에 있고 문이 열려있는 상태를 제외하고는 안에서 1층버튼이 눌리면 1층으로 간다는 의미
+
+=> 따라서 안에서 층수를 선택할 수 있다는 것을 알 수 있음
 
 **2. state의 상태 (알기 쉽게 정리)**
-
+```
 00 멈추고 문이 열리고 (일정시간 후에 닫힘)
 10 상승 문이 닫힘
 01 하강 문이 닫힘
 11 멈추고 문이 닫힌상태
+```
 
 **3. &=의 의미 (= 축약연산자)**
 예시) 이게 차례대로 계산되는 것임.
@@ -180,12 +184,15 @@ task와 함수는 사용자가 지정할 수 있고, 이미 툴에 내장된 함
 => 그럼 우리코드에 한번 적용을 시켜보도록 하자
 
 우리코드) elevator_control부분
+```
 2'b01  : begin
 if(reachBottom) begin
       reg_btdn &=~floor[8:2];  // Clearing at the Down Button
       reg_btup &=~floor[7:1];
-               reg_in_bt_floor &=~floor; 
+      reg_in_bt_floor &=~floor; 
       next_state <=2'b00; 
+```
+
 : Bottom에 도착했을 때, floor[8:2]층은 모두 0이 됨. ~floor[8:2]은 모두 1인 상태가 됨.
 
 : btdn과 ~floor[8:2]를 &로 계산한 후 btdn에 대입함.
@@ -193,6 +200,7 @@ if(reachBottom) begin
 : 근데 이때 btdn이 7‘b0000_000인 상태이므로 바닥에 도착했을 때를 계산하면 btdn= 7’b0000_000이 됨.
  
 **3. | 가 앞에 나올때 의미가 무엇인가?**
+
 1) wire reachTop =   |(getFirstone({reg_btdn,1'b0}|{1'b0,reg_btup}|reg_in_bt_floor)&floor);
 
 2) wire reachBottom = |(getLastone({reg_btdn,1'b0}|{1'b0,reg_btup}|reg_in_bt_floor)&floor);
@@ -202,7 +210,9 @@ if(reachBottom) begin
 
 : 축약 연산자를 통해 |의 계산법을 알게 됨.
 
-: 꼭대기에 도착하는 경우를 살펴보면 {reg_btdn,1'b0}|{1'b0,reg_btup}|reg_in_bt_floor를 계산해보면 되는데 이때, btdn, btup은 무슨 수여도 관계 없지만, in_bt_floor는 무조건 맨 꼭대기층(8층)을 눌러야함.(=8‘b1xxx_xxxx). 이를 getFirstone함수에 넣어보면 8’b1000_0000이됨.
+: 꼭대기에 도착하는 경우를 살펴보면 {reg_btdn,1'b0}|{1'b0,reg_btup}|reg_in_bt_floor를 계산해보면 되는데 이때, btdn, btup은 무슨 수여도 관계 없지만, in_bt_floor는 무조건 맨 꼭대기층(8층)을 눌러야함.(=8‘b1xxx_xxxx)
+
+: 이를 getFirstone함수에 넣어보면 8’b1000_0000이됨.
 
 : 그리고 floor는 꼭대기 층이므로 8’b1000_0000이 됨.
 
