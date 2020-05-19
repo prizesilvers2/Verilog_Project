@@ -51,7 +51,9 @@ pg. 60가서 더 공부하기(verilog HDL의 연산자) => 3,4번 질문
 **5. reg_in_bt_floor& =~floor;  ( &=의 의미알아두기)**
 - &=의 의미는 무엇일까?
 
-단순 할당 연산자 = 외에, SystemVerilog에는 C 할당 연산자와 특수 비트wise 할당 연산자가 포함된다. 할당 연산자는 어떤 왼손 인덱스 표현식이 한 번만 평가된다는 점을 제외하고, 블로킹 할당과 의미적으로 동일하다.
+단순 할당 연산자 = 외에, SystemVerilog에는 C 할당 연산자와 특수 비트wise 할당 연산자가 포함된다. 
+
+할당 연산자는 어떤 왼손 인덱스 표현식이 한 번만 평가된다는 점을 제외하고, 블로킹 할당과 의미적으로 동일하다.
 
 출처: http://www.asic-world.com/systemverilog/operators1.html
 여기가서 예시보면서 같이 이야기 더해보기
@@ -62,7 +64,7 @@ pg. 60가서 더 공부하기(verilog HDL의 연산자) => 3,4번 질문
 
 - default문이 있을 때는 case조건 이외의 조건이 default문을 따르고 없으면 출력이 되지않는다.
 
- => 그럼 default문을 안썼을때는 어떤 다른 결과를 얻게 되는가?
+   => 그럼 default문을 안썼을때는 어떤 다른 결과를 얻게 되는가?
  
 * 결과에는 큰 영향을 주지 않지만 latch가 합성되어 불필요한 게이트가 추가되게 된다.
 
@@ -108,7 +110,9 @@ pg. 60가서 더 공부하기(verilog HDL의 연산자) => 3,4번 질문
 
 => 찾다보니 task하고 function의 차이점과 공통점을 비교해 놓은게 많던데 왜 그런가요?
 
-** task와 function의 차이점 : 
+
+
+**task와 function의 차이점 :** 
 
  - 함수는 적어도 하나 이상의 input 인수를 가지며, output 또는 input 인수를 가질 수 없는
  반면에, task는 인수를 갖지 않을 수 있다. 
@@ -128,6 +132,8 @@ task와 함수는 사용자가 지정할 수 있고, 이미 툴에 내장된 함
 ++출처
 :https://m.blog.naver.com/PostView.nhn?blogId=km641&logNo=221477131956&proxyReferer=https%3A%2F%2Fwww.google.com%2F
 
+
+
 **8. cnt가 무슨 의미를 지니는지, 왜 5bit인지 알아보기** 
 
 +추가로 알아온 것
@@ -141,6 +147,8 @@ task와 함수는 사용자가 지정할 수 있고, 이미 툴에 내장된 함
 => high impedance state는 무슨 의미인가?
 
 ++출처: https://cms3.koreatech.ac.kr/sites/yjjang/down/dsys11/M01_VerilogHDL01.pdf
+
+
 
 ## 오늘 알게 된 것
 
@@ -164,6 +172,7 @@ task와 함수는 사용자가 지정할 수 있고, 이미 툴에 내장된 함
 ```
 
 **3. &=의 의미 (= 축약연산자)**
+
 예시) 이게 차례대로 계산되는 것임.
 ```
   a         := 00000064
@@ -200,7 +209,8 @@ if(reachBottom) begin
 
 : 근데 이때 btdn이 7‘b0000_000인 상태이므로 바닥에 도착했을 때를 계산하면 btdn= 7’b0000_000이 됨.
  
-**3. | 가 앞에 나올때 의미가 무엇인가?**
+ 
+**4. | 가 앞에 나올때 의미가 무엇인가?**
 
 1) wire reachTop =   |(getFirstone({reg_btdn,1'b0}|{1'b0,reg_btup}|reg_in_bt_floor)&floor);
 
@@ -224,7 +234,7 @@ if(reachBottom) begin
 : 결과값이 1이 됨으로써 꼭대기에 도착했음을 알 수 있음.
 
 
-**4. 축약연산자 계산**
+**5. 축약연산자 계산**
 
 ''`
 (고친 코드)
@@ -245,6 +255,7 @@ if(~|{1'b0,reg_btup}&&~|{reg_btdn,1'b0}&&~|reg_in_bt_floor) begin
 : 입력버튼이 없으므로 문이 닫힌 상태에서 상태유지를 함.
 
 **5. 코딩 순서대로 읽고 그림으로 정리해보기**
+
 
 ## 다음주까지 알아올 것
 1. svh를 modelsim에 어떻게 추가하는지 알아보기
