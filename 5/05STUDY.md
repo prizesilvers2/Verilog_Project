@@ -39,6 +39,7 @@ initial if(Init==0)  //Ok
    #100 btup[7] = 1;   // 
    end
 ```
+
 **2) verilog 문법 force & release**
 : tb에서 사용된 문법
 
