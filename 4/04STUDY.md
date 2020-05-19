@@ -60,7 +60,7 @@
 
 ![](https://github.com/hanbyeol-lab/VERILOG_STUDY/blob/master/image07.png)
 
-**2) 원본코드를 돌려본 결과 **
+**2) 원본코드를 돌려본 결과**
 ```
 [원본 코드]
     if(dir & floor[1])
