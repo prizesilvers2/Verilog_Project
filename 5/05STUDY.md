@@ -45,18 +45,20 @@ initial if(Init==0)  //Ok
 : 값을 강제로 바꿔주고 돌려줄 때 사용함
 
 **force**
+
 : verilog에서 신호를 특정 값으로 forcing 할 때 사용
 
 [형식] 
 
-force	신호이름 = 특정값 ;
+force	    신호이름 = 특정값 ;
 
 **release**
+
 : forcing한 값을 다시 풀어줄 때 사용
 
 [형식]
 
-release	신호이름 ;
+release	  신호이름 ;
 
 
 **3) testbench에서 door-open이 되지 않았던 부분 해결**
