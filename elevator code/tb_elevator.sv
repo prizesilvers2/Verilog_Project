@@ -1,7 +1,7 @@
  
 `delay_mode_unit
 `default_nettype none
-`timescale 1ns /100ps
+`timescale 1ns /10ps
 
 module tb_elevator;
 
@@ -50,10 +50,10 @@ elevator DUT (.*) ;
            clk='b0;            rst='b0;           btup='b0;           btdn='b0; 
                 in_bt_floor='b0; 
 
-   #1700 rst=1;
-   #1000 btup[5] = 1;   //
-   #1000 btup[6] = 1;   //
-   #1000 btup[7] = 1;   // 
+   #170 rst=1;
+   #100 btup[5] = 1;   //
+   #100 btup[6] = 1;   //
+   #100 btup[7] = 1;   // 
    end
      
  initial if(Init==1)   // Working Good
@@ -63,9 +63,9 @@ elevator DUT (.*) ;
     
    #100 rst=0; 
    #100 rst=1;  btup='b0; btdn='b0; 
-   #1000 btdn[2] = 1;
-   #1000 btdn[3] = 1;
-   #1000 btdn[4] = 1;
+   #100 btdn[2] = 1;
+   #100 btdn[3] = 1;
+   #100 btdn[4] = 1;
    end   
  
 
@@ -75,20 +75,20 @@ elevator DUT (.*) ;
            clk='b0;            rst='b0;           btup='b0;           btdn='b0; 
                 in_bt_floor='b0;
      
-     #100 rst=0; 
+   #100 rst=0; 
    #100 rst=1;  btup='b0; btdn='b0; 
-   #1000 in_bt_floor[2] = 1;
-   #1000 in_bt_floor[3] = 1;   
+   #100 in_bt_floor[2] = 1;
+   #100 in_bt_floor[3] = 1;   
   end  
 
  initial if(Init==3) // Ok
    begin
            clk='b0;            rst='b0;           btup='b0;           btdn='b0; 
                 in_bt_floor='b0;
-    #100 rst=0; 
+   #100 rst=0; 
    #100 rst=1;  btup='b0; btdn='b0; 
-   #1000 btup[2] = 1;
-   #1000 in_bt_floor[4]=1'b1;
+   #100 btup[2] = 1;
+   #100 in_bt_floor[4]=1'b1;
  end    
 
  initial if(Init==4) // Ok
@@ -97,10 +97,10 @@ elevator DUT (.*) ;
                 in_bt_floor='b0;
     #90 rst=0; 
    #100 rst=1;  btup='b0; btdn='b0; 
-   #1000 btup[2] = 1;
-   #1000 btup[2] = 0; in_bt_floor[4]=1'b1;
+   #100 btup[2] = 1;
+   #100 btup[2] = 0; in_bt_floor[4]=1'b1;
    @(negedge in_bt_floor[4]) btup[1]=1'b1;
-   #1000 ;
+   #100 ;
     
     
   end
